@@ -9,17 +9,14 @@ export const deleteTodo = async (
   res: Response<DeleteRes>,
 ) => {
   const { id } = req.params;
-  if (!id) {
-    return res.status(400).json({ message: "нет id в параметрах" });
-  }
 
   const todo = await todosRepository.find({ where: { id: parseInt(id) } });
-  if (todo) {
-    await todosRepository.delete(todo);
-    return res.status(204).send();
-  } else {
+  if (!todo.length) {
     return res
       .status(404)
       .json({ message: "а чото я такой тудухи не могу найти, прикол" });
+  } else {
+    await todosRepository.delete(todo);
+    return res.status(204).send();
   }
 };
