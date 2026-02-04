@@ -10,9 +10,10 @@ export const AppDataSource = new DataSource({
   username: "sergey",
   password: "12345",
   database: "mydb",
-  synchronize: true,
+  synchronize: false,
   logging: false,
   entities: [User, Todo],
-  migrations: [],
+  migrationsTableName: "fucking_migrations",
+  migrations: [__dirname + "/migrations/**/*{.js,.ts}"],
   subscribers: [],
 });

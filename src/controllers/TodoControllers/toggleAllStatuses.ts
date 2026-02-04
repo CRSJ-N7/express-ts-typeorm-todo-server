@@ -9,16 +9,23 @@ export const toggleAllStatuses = async (
   res: Response<ToggleAllRes>,
 ) => {
   const todos = await todosRepository.find();
-  if (todos.length === 0)
-    return res.status(404).json({ message: "в бд нет тудух" });
+  if (todos.length === 0) {
+    return res.json({ message: "в бд нет тудух" });
+  }
 
-  const isAllCompleted = todos.every((todo) => todo.isCompleted);
-  const status = isAllCompleted ? false : true;
+  const atLeastOneNoNCompleted = todos.some((todo) => !todo.isCompleted);
+
+  let setCondition;
+  if (atLeastOneNoNCompleted) {
+    setCondition = { isCompleted: true };
+  } else {
+    setCondition = { isCompleted: false };
+  }
 
   await todosRepository
     .createQueryBuilder()
     .update(Todo)
-    .set({ isCompleted: status })
+    .set(setCondition)
     .execute();
 
   return res.status(200).json({ message: "статусы toggled успешно" });

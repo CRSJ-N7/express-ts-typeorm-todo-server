@@ -3,7 +3,7 @@ import todosRepository from "../../utils/repository/todoRepository";
 import { Todo } from "../../entities/Todo";
 
 type UpdateReqParams = { id: string };
-type UpdateReqBody = { text?: string; isCompleted?: boolean };
+type UpdateReqBody = { title?: string; isCompleted?: boolean };
 type UpdateRes = { message: string } | Todo;
 
 export const updateTodo = async (
@@ -25,7 +25,7 @@ export const updateTodo = async (
       .json({ message: "ты долбаёб? у меня нет такого id, пшёл нахуй отсюда" });
   }
 
-  todo.text = req.body.text ?? todo.text;
+  todo.title = req.body.title ?? todo.title;
   todo.isCompleted = req.body.isCompleted ?? todo.isCompleted;
 
   await todosRepository.save(todo);

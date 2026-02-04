@@ -17,5 +17,9 @@ export const deleteTodo = async (
   if (todo) {
     await todosRepository.delete(todo);
     return res.status(204).send();
+  } else {
+    return res
+      .status(404)
+      .json({ message: "а чото я такой тудухи не могу найти, прикол" });
   }
 };

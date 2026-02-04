@@ -11,15 +11,15 @@ export const getTodos = async (
 ) => {
   const { filter } = req.query;
 
-  if (!filter) {
-    const todos = await todosRepository.find();
-    if (!todos.length) {
-      return res.status(404).json({ message: "нет тудушек в бд" });
-    }
-    return res.status(200).json(todos);
+  let whereObject;
+  if (filter === "completed") {
+    whereObject = { isCompleted: true };
+  } else if (filter === "active") {
+    whereObject = { isCompleted: false };
+  } else {
+    whereObject = {};
   }
-  const status = filter === "completed";
 
-  const todos = await todosRepository.find({ where: { isCompleted: status } });
+  const todos = await todosRepository.find({ where: whereObject });
   return res.status(200).json(todos);
 };
