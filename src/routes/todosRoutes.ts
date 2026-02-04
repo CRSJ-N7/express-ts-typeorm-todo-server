@@ -1,12 +1,10 @@
 import { Router } from "express";
-import {
-  createTodos,
-  deleteAllCompleted,
-  deleteTodo,
-  getTodos,
-  toggleAllStatuses,
-  updateTodo,
-} from "../controllers/todoController";
+import { createTodos } from "../controllers/TodoControllers/createTodo";
+import { deleteAllCompleted } from "../controllers/TodoControllers/deleteAllCompleted";
+import { deleteTodo } from "../controllers/TodoControllers/deleteTodo";
+import { getTodos } from "../controllers/TodoControllers/getTodos";
+import { toggleAllStatuses } from "../controllers/TodoControllers/toggleAllStatuses";
+import { updateTodo } from "../controllers/TodoControllers/updateTodo";
 
 const router = Router();
 
