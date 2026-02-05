@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Todo } from "../../entities/Todo";
-import todosRepository from "../../utils/repository/todoRepository";
+import todosRepository from "../../db/repository/todoRepository";
 
 type ToggleAllRes = { message: string };
 

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import todosRepository from "../../utils/repository/todoRepository";
+import todosRepository from "../../db/repository/todoRepository";
 
 type DeleteCompletedRes = { message: string };
 

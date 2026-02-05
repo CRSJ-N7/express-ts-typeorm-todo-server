@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import todosRepository from "../../utils/repository/todoRepository";
+import todosRepository from "../../db/repository/todoRepository";
 import { Todo } from "../../entities/Todo";
 
 type GetTodosReq = { filter: string };

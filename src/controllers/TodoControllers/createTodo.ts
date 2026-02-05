@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Todo } from "../../entities/Todo";
-import todosRepository from "../../utils/repository/todoRepository";
+import todosRepository from "../../db/repository/todoRepository";
 
 type CreateReq = { title: string };
 type CreateRes = { message: string } | { newTodo: Todo; message: string };

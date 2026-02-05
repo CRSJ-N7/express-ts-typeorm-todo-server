@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_USER: sergey
       POSTGRES_PASSWORD: 12345
-      POSTGRES_DB: mydb
+      POSTGRES_DB: todo-db
     ports:
       - "5432:5432"
     volumes:
